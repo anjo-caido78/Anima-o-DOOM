@@ -1,5 +1,35 @@
 # Anima-o-DOOM
 Teste/Aula de DOOM
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Codigo HTML.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Carregamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela de carregamento -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>Carregando...</p>
+    </div>
+
+    <!-- Conteúdo principal --> 
+    <div id="content" class="hidden">
+        <h1>Bem-vindo!</h1>
+        <p>O conteúdo foi carregado com sucesso.</p>
+        <button id="block01">Aperte AQUI</button>
+        <button id="block02">Aperte aqui</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Codigo  CSS.
 /* Estilo da tela de carregamento */
 #loading-screen {
@@ -67,3 +97,24 @@ Codigo  CSS.
     transform: scale(1.1);
     background-color: #2980b9;
 }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Codigo Javascript.
+window.onload = function() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const content = document.getElementById('content');
+
+    // Simula um tempo de carregamento de 3 segundos
+    setTimeout(function() {
+        // Adiciona a classe 'hidden' para iniciar a transição
+        loadingScreen.classList.add('hidden');
+
+        // Mostra o conteúdo principal
+        content.style.display = 'block';
+
+        // Remove a tela de carregamento do DOM após a transição
+        loadingScreen.addEventListener('transitionend', function() {
+            loadingScreen.style.display = 'none';
+        });
+    }, 3000); // 3000 milissegundos = 3 segundos
+};
